@@ -1,0 +1,47 @@
+﻿@using Concesionario_Vehiculos_18_11.Models
+@model  IEnumerable<Concesionario_Vehiculos_18_11.Models.Tipo>
+
+@{
+    ViewBag.Title = "Index";
+    
+}
+<br/>
+<h3 class="text-warning">  <strong> TIPOS DE VEHICULO </strong> </h3>
+<br />
+<br/>
+<div id="listadotipos" class="col col-md-8">
+    <table class="table table-striped">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreTipo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DescripcionTipo)
+            </th>
+            <th>
+                Detalle
+            </th>
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NombreTipo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DescripcionTipo)
+                </td>
+                <td>
+                    <button class="btn btn-info"> @Html.ActionLink("Ver listado", "Detalle", new { id = item.IdTipo }) </button>
+                </td>
+
+            </tr>
+        }
+
+    </table>
+
+</div>
+
+
