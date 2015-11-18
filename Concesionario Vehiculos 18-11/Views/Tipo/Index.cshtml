@@ -18,9 +18,8 @@
             <th>
                 @Html.DisplayNameFor(model => model.DescripcionTipo)
             </th>
-            <th>
-                Detalle
-            </th>
+            <th></th>
+            <th></th>
 
         </tr>
 
@@ -36,7 +35,9 @@
                 <td>
                     <button class="btn btn-info"> @Html.ActionLink("Ver listado", "Detalle", new { id = item.IdTipo }) </button>
                 </td>
-
+                <td>
+                    <button class="btn btn-warning"> @Html.ActionLink("Editar", "Modificar", new { id = item.IdTipo }) </button>
+                </td>
             </tr>
         }
 

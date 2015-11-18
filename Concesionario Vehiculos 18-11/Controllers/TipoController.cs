@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -42,6 +43,28 @@ namespace Concesionario_Vehiculos_18_11.Controllers
 
             return PartialView("_listadoVehiculos", coche);
 
+        }
+
+        public ActionResult Modificar(int id)
+        {
+            Tipo tp = db.Tipo.Find(id);
+            if (tp==null)
+            {
+                return RedirectToAction("Index");
+            }
+            return View(tp);
+        }
+
+        [HttpPost]
+        public ActionResult Modificar(Tipo tp)
+        {
+            if (ModelState.IsValid)
+            {
+             db.Entry(tp).State=EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(tp);
         }
 
     }
