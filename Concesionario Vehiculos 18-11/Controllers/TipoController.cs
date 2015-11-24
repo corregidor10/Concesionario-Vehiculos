@@ -10,7 +10,7 @@ namespace Concesionario_Vehiculos_18_11.Controllers
 {
     public class TipoController : Controller
     {
-        private Vehiculo20Entities db= new Vehiculo20Entities();
+        private Concesionario20Entities db= new Concesionario20Entities();
 
         // GET: Tipo
         public ActionResult Index()
