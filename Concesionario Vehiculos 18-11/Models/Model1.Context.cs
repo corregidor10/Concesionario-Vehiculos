@@ -13,10 +13,10 @@ namespace Concesionario_Vehiculos_18_11.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Vehiculo20Entities : DbContext
+    public partial class Concesionario20Entities : DbContext
     {
-        public Vehiculo20Entities()
-            : base("name=Vehiculo20Entities")
+        public Concesionario20Entities()
+            : base("name=Concesionario20Entities")
         {
         }
     

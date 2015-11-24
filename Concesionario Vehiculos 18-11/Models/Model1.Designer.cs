@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'c:\users\alumno_2\documents\visual studio 2015\Projects\Concesionario Vehiculos 18-11\Concesionario Vehiculos 18-11\Models\Model1.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\Daniel\OneDrive\CURSO MCSD\70-486\Practicas\041 18-11 Concesionario-Vehiculos\Concesionario-Vehiculos-18-11-master\Concesionario Vehiculos 18-11\Models\Model1.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

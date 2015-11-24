@@ -4,24 +4,24 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Vehiculo20Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Concesionario20Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Tipo">
           <Key>
             <PropertyRef Name="IdTipo" />
           </Key>
           <Property Name="IdTipo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NombreTipo" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="DescripcionTipo" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="DescripcionTipo" Type="nvarchar" MaxLength="500" Nullable="false" />
         </EntityType>
         <EntityType Name="Vehiculo">
           <Key>
             <PropertyRef Name="IdVehiculo" />
           </Key>
           <Property Name="IdVehiculo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Matricula" Type="nvarchar" MaxLength="7" Nullable="false" />
+          <Property Name="Matricula" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Marca" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Modelo" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Precio" Type="float" Nullable="false" />
+          <Property Name="Precio" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="IdTipo" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_Vehiculo_Tipo_IdTipo">
@@ -36,7 +36,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Vehiculo20ModelStoreContainer">
+        <EntityContainer Name="Concesionario20ModelStoreContainer">
           <EntitySet Name="Tipo" EntityType="Self.Tipo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Vehiculo" EntityType="Self.Vehiculo" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Vehiculo_Tipo_IdTipo" Association="Self.FK_Vehiculo_Tipo_IdTipo">
@@ -48,14 +48,14 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="Vehiculo20Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="Concesionario20Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Tipo">
           <Key>
             <PropertyRef Name="IdTipo" />
           </Key>
           <Property Name="IdTipo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NombreTipo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="DescripcionTipo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DescripcionTipo" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Vehiculo" Relationship="Self.FK_Vehiculo_Tipo_IdTipo" FromRole="Tipo" ToRole="Vehiculo" />
         </EntityType>
         <EntityType Name="Vehiculo">
@@ -63,10 +63,10 @@
             <PropertyRef Name="IdVehiculo" />
           </Key>
           <Property Name="IdVehiculo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Matricula" Type="String" MaxLength="7" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Matricula" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Marca" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Modelo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Precio" Type="Double" Nullable="false" />
+          <Property Name="Precio" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="IdTipo" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Tipo" Relationship="Self.FK_Vehiculo_Tipo_IdTipo" FromRole="Vehiculo" ToRole="Tipo" />
         </EntityType>
@@ -82,7 +82,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Vehiculo20Entities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Concesionario20Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Tipo" EntityType="Self.Tipo" />
           <EntitySet Name="Vehiculo" EntityType="Self.Vehiculo" />
           <AssociationSet Name="FK_Vehiculo_Tipo_IdTipo" Association="Self.FK_Vehiculo_Tipo_IdTipo">
@@ -95,9 +95,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Vehiculo20ModelStoreContainer" CdmEntityContainer="Vehiculo20Entities">
+        <EntityContainerMapping StorageEntityContainer="Concesionario20ModelStoreContainer" CdmEntityContainer="Concesionario20Entities">
           <EntitySetMapping Name="Tipo">
-            <EntityTypeMapping TypeName="Vehiculo20Model.Tipo">
+            <EntityTypeMapping TypeName="Concesionario20Model.Tipo">
               <MappingFragment StoreEntitySet="Tipo">
                 <ScalarProperty Name="IdTipo" ColumnName="IdTipo" />
                 <ScalarProperty Name="NombreTipo" ColumnName="NombreTipo" />
@@ -106,7 +106,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Vehiculo">
-            <EntityTypeMapping TypeName="Vehiculo20Model.Vehiculo">
+            <EntityTypeMapping TypeName="Concesionario20Model.Vehiculo">
               <MappingFragment StoreEntitySet="Vehiculo">
                 <ScalarProperty Name="IdVehiculo" ColumnName="IdVehiculo" />
                 <ScalarProperty Name="Matricula" ColumnName="Matricula" />
