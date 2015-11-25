@@ -8,6 +8,7 @@ using Concesionario_Vehiculos_18_11.Models;
 
 namespace Concesionario_Vehiculos_18_11.Controllers
 {
+    [Authorize]
     public class TipoController : Controller
     {
         private Concesionario20Entities db= new Concesionario20Entities();
@@ -15,35 +16,11 @@ namespace Concesionario_Vehiculos_18_11.Controllers
         // GET: Tipo
         public ActionResult Index()
         {
-            var data = db.Tipo;
-            ViewBag.losvehiculos = db.Vehiculo;
-
-            return View(data);
+         
+            return View(db.Tipo.ToList());
         }
 
 
-        public ActionResult Detalle(int id)
-        {
-            var data = db.Vehiculo.Where(o=>o.IdTipo==id);
-
-            return View(data);
-        }
-        [OutputCache(Duration = 0, VaryByParam = "*")]
-        public ActionResult BuscarMarca(String marca)
-        {
-            var coche = db.Vehiculo.Where(o => o.Marca.Contains(marca));
-
-            return PartialView("_listadoVehiculos", coche);
-
-        }
-        [OutputCache(Duration = 0, VaryByParam = "*")]
-        public ActionResult BuscarMatricula (String matricula)
-        {
-            var coche = db.Vehiculo.Where(o => o.Matricula.Contains(matricula));
-
-            return PartialView("_listadoVehiculos", coche);
-
-        }
 
         public ActionResult Modificar(int id)
         {
@@ -65,6 +42,24 @@ namespace Concesionario_Vehiculos_18_11.Controllers
                 return RedirectToAction("Index");
             }
             return View(tp);
+        }
+
+        public ActionResult Alta()
+        {
+            return View(new Tipo());
+        }
+
+        [HttpPost]
+        public ActionResult Alta(Tipo model)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Tipo.Add(model);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return RedirectToAction("Index");
         }
 
     }

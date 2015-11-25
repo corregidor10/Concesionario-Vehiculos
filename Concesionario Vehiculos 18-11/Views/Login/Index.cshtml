@@ -1,0 +1,21 @@
+﻿@model Concesionario_Vehiculos_18_11.Models.Usuario
+
+@{
+    ViewBag.Title = "Login";
+}
+
+@using (Html.BeginForm())
+{
+    <div style="border: 10px solid grey; margin-left: 150px; margin-top: 100px; width: 400px; height: 150px">
+        <br />
+        <div style="width: 100px; float: left; margin-left: 25px"> @Html.LabelFor(o => o.Login)</div>
+        <div style="width: 200px; float: left"> @Html.TextBoxFor(o => o.Login)
+       @Html.ValidationMessageFor(o => o.Login)</div>
+        <br />
+        <div style="width: 100px; clear: both; float: left; margin-left: 25px"> @Html.LabelFor(o => o.Password)</div>
+        <div style="width: 100px; float: left"> @Html.PasswordFor(o => o.Password)
+         @Html.ValidationMessageFor(o => o.Password)</div>
+        <br /><br />
+        <input type="submit" value="Enviar" style="clear: both; margin-left: 225px;"/>
+    </div>
+}

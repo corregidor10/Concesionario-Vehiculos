@@ -7,8 +7,9 @@
 }
 <br/>
 <h3 class="text-warning">  <strong> TIPOS DE VEHICULO </strong> </h3>
+
 <br />
-<br/>
+<br />
 <div id="listadotipos" class="col col-md-8">
     <table class="table table-striped">
         <tr>
@@ -33,15 +34,20 @@
                     @Html.DisplayFor(modelItem => item.DescripcionTipo)
                 </td>
                 <td>
-                    <button class="btn btn-info"> @Html.ActionLink("Ver listado", "Detalle", new { id = item.IdTipo }) </button>
+                    <button class="btn btn-info"> @Html.ActionLink("Vehiculos", "Index", "Vehiculo", new {id = item.IdTipo}, null) </button>
                 </td>
                 <td>
-                    <button class="btn btn-warning"> @Html.ActionLink("Editar", "Modificar", new { id = item.IdTipo }) </button>
+                    <button class="btn btn-warning"> @Html.ActionLink("Editar", "Modificar", new {id = item.IdTipo}) </button>
                 </td>
             </tr>
         }
 
     </table>
+    <br />
+    <br />
+    <p>
+        <button class="btn btn-success"> @Html.ActionLink("Alta", "Alta") </button>
+    </p>
 
 </div>
 
